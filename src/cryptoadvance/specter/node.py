@@ -25,6 +25,15 @@ from .rpc import (
 from .specter_error import SpecterError, BrokenCoreConnectionException
 from .device import Device
 
+# Default configuration values for Ethereum connections. These are intentionally
+# minimal and are used by :class:`~cryptoadvance.specter.ethereum.node.EthereumNode`.
+ETH_DEFAULT_RPC_PORT = 8545
+ETH_CHAIN_IDS = {
+    "main": 1,
+    "goerli": 5,
+    "sepolia": 11155111,
+}
+
 logger = logging.getLogger(__name__)
 
 
