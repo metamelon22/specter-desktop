@@ -6,7 +6,14 @@ import random
 import secrets
 from pathlib import Path
 
-from dotenv import load_dotenv
+# ``python-dotenv`` is an optional dependency used in development. Some
+# environments (like the minimal test container) might not provide it, so we
+# gracefully fallback if it is missing.
+try:  # pragma: no cover - optional dependency
+    from dotenv import load_dotenv
+except ModuleNotFoundError:  # pragma: no cover - handled in tests
+    def load_dotenv(*args, **kwargs):  # type: ignore
+        return False
 
 # BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
